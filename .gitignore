@@ -1,0 +1,22 @@
+# 模型 / 大文件
+pre_train_model/
+data/
+*.pt
+*.bin
+*.onnx
+*.ckpt
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.pkl
+*.log
+
+# 虚拟环境
+venv/
+.venv/
+.env/
+
+# 系统文件
+.DS_Store
+Thumbs.db
