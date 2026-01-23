@@ -1,6 +1,6 @@
 # 模型 / 大文件
 pre_train_model/
-data/
+
 *.pt
 *.bin
 *.onnx
