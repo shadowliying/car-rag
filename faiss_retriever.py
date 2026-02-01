@@ -18,11 +18,13 @@ class FaissRetriever(object):
                                encode_kwargs = {"batch_size": 64}  # 批量处理文本，提高计算效率
                                # model_kwargs = {"device":"cuda:1"}
                            )
+        # 2. 把文本转成Document对象
         docs = []
         for idx, line in enumerate(data):  # 遍历每一行文本
             line = line.strip("\n").strip()  # 去除首尾换行符和空格
             words = line.split("\t")     # 按制表符分割
             docs.append(Document(page_content=words[0], metadata={"id": idx}))  # 存储文档的文本内容。 存储与文档相关的元数据
+        # 3. 构建FAISS向量索引
         self.vector_store = FAISS.from_documents(docs, self.embeddings)  # 将 Document 对象转换为向量，并构建FAISS索引
         
         # 生成embeddings的时间较长，跑完第一次可以把结果持久化，后面直接load
